@@ -467,10 +467,25 @@ p { line-height: 1.7; }
   aspect-ratio: 1;
   flex-shrink: 0;
 }
-#orbit-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
+/* CSS orbit rings (replaces Three.js canvas) */
+.orbit-ring {
+  position: absolute; top: 50%; left: 50%;
+  border-radius: 50%; pointer-events: none;
+}
+.orbit-ring--outer {
+  width: 320px; height: 320px;
+  border: 1px solid rgba(99,102,241,0.2);
+  transform: translate(-50%,-50%);
+  animation: orbit-spin 40s linear infinite;
+}
+.orbit-ring--mid {
+  width: 200px; height: 200px;
+  border: 1px solid rgba(27,45,147,0.35);
+  transform: translate(-50%,-50%);
+}
+@keyframes orbit-spin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 /* Orbit overlay labels */
@@ -482,16 +497,26 @@ p { line-height: 1.7; }
 }
 .orbit-label {
   position: absolute;
+  top: 50%; left: 50%;
   pointer-events: auto;
-  transform: translate(-50%, -50%);
   text-align: center;
   transition: opacity 0.3s ease;
   opacity: 0.5;
-  will-change: left, top, opacity;
+  will-change: opacity;
 }
 .orbit-label.active {
   opacity: 1;
 }
+/* CSS orbit positioning — 9 nodes at 40° intervals, radius 155px */
+.orbit-label[data-step="0"] { transform: translate(-50%,-50%) rotate(-90deg) translateX(155px) rotate(90deg); }
+.orbit-label[data-step="1"] { transform: translate(-50%,-50%) rotate(-50deg) translateX(155px) rotate(50deg); }
+.orbit-label[data-step="2"] { transform: translate(-50%,-50%) rotate(-10deg) translateX(155px) rotate(10deg); }
+.orbit-label[data-step="3"] { transform: translate(-50%,-50%) rotate(30deg)  translateX(155px) rotate(-30deg); }
+.orbit-label[data-step="4"] { transform: translate(-50%,-50%) rotate(70deg)  translateX(155px) rotate(-70deg); }
+.orbit-label[data-step="5"] { transform: translate(-50%,-50%) rotate(110deg) translateX(155px) rotate(-110deg); }
+.orbit-label[data-step="6"] { transform: translate(-50%,-50%) rotate(150deg) translateX(155px) rotate(-150deg); }
+.orbit-label[data-step="7"] { transform: translate(-50%,-50%) rotate(190deg) translateX(155px) rotate(-190deg); }
+.orbit-label[data-step="8"] { transform: translate(-50%,-50%) rotate(230deg) translateX(155px) rotate(-230deg); }
 .orbit-label__inner {
   display: flex;
   flex-direction: column;
@@ -515,26 +540,38 @@ p { line-height: 1.7; }
   flex-shrink: 0;
 }
 .orbit-label__title {
-  display: none;
+  display: block;
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+  margin-top: 2px;
 }
 
 /* Orbit point icon colours — dark on bright node bg for visibility */
 .orbit-label .orbit-label__icon { color: rgba(0,0,0,0.6); }
 .orbit-label.active .orbit-label__icon { color: rgba(0,0,0,0.85); }
 
-/* Hub label (center) — logo only — BIG */
+/* Hub label (center) — circular hub with logo */
 .orbit-hub-label {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(27,45,147,0.85);
+  border: 2px solid rgba(99,102,241,0.45);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 40px rgba(27,45,147,0.55);
   transform: translate(-50%, -50%);
   z-index: 4;
   text-align: center;
   pointer-events: none;
 }
 .orbit-hub-label img {
-  width: 200px;
+  width: 68px;
   height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
 }
 
 /* Info panel (right side) */
