@@ -35,13 +35,13 @@
   /* Pillar colors — Neelam Blue for GoBetter & StaffBetter, Orange for GigBetter */
   --gobetter:     #1B2D93;
   --gobetter-glow: rgba(27,45,147,0.15);
-  --staffbetter:  #1B2D93;
-  --staffbetter-glow: rgba(27,45,147,0.15);
+  --staffbetter:  #3B82F6;
+  --staffbetter-glow: rgba(59,130,246,0.15);
   --gigbetter:    #F59E0B;
   --gigbetter-glow: rgba(245,158,11,0.15);
 
   --gobetter-grad: linear-gradient(135deg, #1B2D93 0%, #3D40A8 100%);
-  --staffbetter-grad: linear-gradient(135deg, #1B2D93 0%, #3D40A8 100%);
+  --staffbetter-grad: linear-gradient(135deg, #1B2D93 0%, #3B82F6 100%);
   --gigbetter-grad: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
 
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
