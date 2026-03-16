@@ -5,10 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us — BetterPlace</title>
   <meta name="description" content="Connect with BetterPlace for enterprise solutions, investor relations, or partnership opportunities." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://betterplaceglobal.com/contact.html" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://betterplaceglobal.com/contact.html" />
+  <meta property="og:title" content="Contact BetterPlace — Enterprise, Investors & Partnerships" />
+  <meta property="og:description" content="Get in touch with BetterPlace for enterprise workforce solutions, investor relations, or regional partnership opportunities across Asia." />
+  <meta property="og:image" content="https://betterplaceglobal.com/assets/logo/png%202/logo-blue-horizontal.png" />
+  <meta property="og:site_name" content="BetterPlace" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact BetterPlace — Enterprise, Investors & Partnerships" />
+  <meta name="twitter:description" content="Get in touch with BetterPlace for enterprise workforce solutions, investor relations, or regional partnership opportunities across Asia." />
+  <meta name="twitter:image" content="https://betterplaceglobal.com/assets/logo/png%202/logo-blue-horizontal.png" />
+  <!-- Schema: ContactPage + LocalBusiness + BreadcrumbList -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact BetterPlace",
+      "url": "https://betterplaceglobal.com/contact.html",
+      "description": "Contact BetterPlace for enterprise solutions, investor relations, or partnership enquiries.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "BetterPlace",
+        "url": "https://betterplaceglobal.com",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "contact@betterplace.co.in",
+            "areaServed": "IN"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "joshua@troopers.com.my",
+            "areaServed": ["SG", "MY"]
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bengaluru",
+          "addressCountry": "IN"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://betterplaceglobal.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://betterplaceglobal.com/contact.html" }
+      ]
+    }
+  ]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" /></noscript>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" type="image/png" href="assets/logo-bp.png" />
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav nav--dark" id="main-nav">
@@ -32,7 +95,7 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="contact-hero">
+<section class="contact-hero" id="main-content">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%, rgba(91,127,255,0.1) 0%, transparent 60%);z-index:0;"></div>
   <div class="container" style="position:relative;z-index:2;">
     <div class="eyebrow" style="color:rgba(255,255,255,0.75);">Get in Touch</div>
@@ -54,37 +117,37 @@
         <form novalidate>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
             <div class="form-group">
-              <label>Full Name *</label>
-              <input type="text" placeholder="Your full name" required />
+              <label for="contact-name">Full Name *</label>
+              <input id="contact-name" type="text" placeholder="Your full name" required autocomplete="name" />
             </div>
             <div class="form-group">
-              <label>Company *</label>
-              <input type="text" placeholder="Your company name" required />
+              <label for="contact-company">Company *</label>
+              <input id="contact-company" type="text" placeholder="Your company name" required autocomplete="organization" />
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
             <div class="form-group">
-              <label>Email Address *</label>
-              <input type="email" placeholder="you@company.com" required />
+              <label for="contact-email">Email Address *</label>
+              <input id="contact-email" type="email" placeholder="you@company.com" required autocomplete="email" />
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="+91 98765 43210" />
+              <label for="contact-phone">Phone Number</label>
+              <input id="contact-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" />
             </div>
           </div>
-          <div class="form-group" id="enterprise">
-            <label>I am interested in *</label>
-            <select required>
+          <div class="form-group">
+            <label for="contact-interest">I am interested in *</label>
+            <select id="contact-interest" required>
               <option value="" disabled selected>Select an option</option>
               <option value="enterprise">Enterprise Solutions</option>
-              <option value="investor" id="ir">Investor Relations</option>
+              <option value="investor">Investor Relations</option>
               <option value="partnership">Partnership</option>
               <option value="other">Other</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Message</label>
-            <textarea rows="5" placeholder="Tell us about your workforce needs or enquiry..."></textarea>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" rows="5" placeholder="Tell us about your workforce needs or enquiry..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -149,7 +212,7 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <img src="assets/logo/png 2/logo-white-horizontal.png" alt="BetterPlace" />
+        <img src="assets/logo/png 2/logo-white-horizontal.png" alt="BetterPlace" loading="lazy" />
         <p style="margin-top:16px;">Asia's largest full-stack platform for frontline workforce management. Empowering 25M+ workers across 1,000+ enterprises in 500+ cities.</p>
       </div>
       <div class="footer__col"><h5>Offerings</h5><a href="gobetter.html">GoBetter</a><a href="staffbetter.html">StaffBetter</a><a href="gigbetter.html">GigBetter</a></div>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block backup and experiment files from indexing
+Disallow: /homepage-v2.html
+Disallow: /index-v1-backup.html
+Disallow: /hero-concepts.html
+
+# Sitemap
+Sitemap: https://betterplaceglobal.com/sitemap.xml

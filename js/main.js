@@ -363,10 +363,38 @@ function initOrbitScroll() {
       const triggerIdx = step + 1; // offset because -1 is first
       const targetTrigger = triggers[triggerIdx];
       if (targetTrigger) {
+        clearInterval(autoOrbitTimer);
         targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   });
+
+  // Auto-advance every 3 seconds through all steps
+  let autoOrbitIndex = 0; // starts at trigger index 0 (step -1 already shown)
+  const autoOrbitTimer = setInterval(() => {
+    autoOrbitIndex++;
+    if (autoOrbitIndex >= triggers.length) {
+      clearInterval(autoOrbitTimer);
+      return;
+    }
+    triggers[autoOrbitIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 3000);
+
+  // Pause auto-advance on manual scroll
+  window.addEventListener('wheel', () => clearInterval(autoOrbitTimer), { once: true });
+  window.addEventListener('touchmove', () => clearInterval(autoOrbitTimer), { once: true });
+
+  // Show "See Overview" button once the orbit section is in view
+  const overviewBtn = document.getElementById('orbit-overview-btn');
+  if (overviewBtn) {
+    const btnObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        overviewBtn.style.opacity = entry.isIntersecting ? '1' : '0';
+        overviewBtn.style.pointerEvents = entry.isIntersecting ? 'auto' : 'none';
+      });
+    }, { threshold: 0.1 });
+    btnObserver.observe(journey);
+  }
 
   // Initialize first step
   setActiveStep(-1);
