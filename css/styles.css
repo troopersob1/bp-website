@@ -478,9 +478,7 @@ p { line-height: 1.7; }
   transform: translate(-50%,-50%);
 }
 .orbit-ring--mid {
-  width: 200px; height: 200px;
-  border: 1px solid rgba(27,45,147,0.35);
-  transform: translate(-50%,-50%);
+  display: none;
 }
 
 /* Orbit overlay labels */
@@ -513,38 +511,38 @@ p { line-height: 1.7; }
 .orbit-label[data-step="7"] { transform: translate(-50%,-50%) rotate(190deg) translateX(155px) rotate(-190deg); }
 .orbit-label[data-step="8"] { transform: translate(-50%,-50%) rotate(230deg) translateX(155px) rotate(-230deg); }
 .orbit-label__inner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(27,45,147,0.7);
+  border: 1.5px solid rgba(99,102,241,0.35);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(27,45,147,0.35);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .orbit-label.active .orbit-label__inner {
-  transform: scale(1.15);
+  background: rgba(27,45,147,0.95);
+  border-color: rgba(99,102,241,0.75);
+  box-shadow: 0 0 20px rgba(27,45,147,0.7);
+  transform: scale(1.2);
 }
 .orbit-label__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: inherit;
+  color: rgba(255,255,255,0.85);
+}
+.orbit-label.active .orbit-label__icon {
+  color: #fff;
 }
 .orbit-label__icon svg {
   flex-shrink: 0;
 }
 .orbit-label__title {
-  display: block;
-  font-size: 0.58rem;
-  color: rgba(255,255,255,0.7);
-  white-space: nowrap;
-  margin-top: 2px;
+  display: none;
 }
-
-/* Orbit point icon colours — dark on bright node bg for visibility */
-.orbit-label .orbit-label__icon { color: rgba(0,0,0,0.6); }
-.orbit-label.active .orbit-label__icon { color: rgba(0,0,0,0.85); }
 
 /* Hub label (center) — logo only */
 .orbit-hub-label {
