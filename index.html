@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BetterPlace — Homepage V2 (Logo Orbit Experiment)</title>
   <meta name="description" content="Experimental homepage — orbit rings arranged to echo the BetterPlace logomark." />
-  <link rel="stylesheet" href="css/styles.css?v=20260310c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260316" />
   <link rel="icon" type="image/png" href="assets/logo-bp.png" />
+  <style>
+    .orbit-label__inner { background: transparent !important; border: none !important; box-shadow: none !important; }
+    .orbit-label.active .orbit-label__inner { background: transparent !important; border: none !important; box-shadow: none !important; }
+  </style>
 </head>
 <body>
 
@@ -1105,7 +1109,7 @@ function setup3DOrbit(canvas) {
       nodeMeshes[i].position.set(sp.x, sp.y, sp.z);
       nodeGlows[i].position.copy(nodeMeshes[i].position);
       nodeMeshes[i].material.emissiveIntensity = isActive ? 1.2 : 0.4;
-      nodeMeshes[i].material.opacity = isActive ? 1 : 0.6;
+      nodeMeshes[i].material.opacity = isActive ? 1 : 0.8;
       nodeMeshes[i].scale.setScalar(isActive ? 1.5 : 1);
       nodeGlows[i].material.opacity = 0;
       nodeGlows[i].scale.setScalar(0);
