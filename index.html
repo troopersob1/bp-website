@@ -638,9 +638,14 @@
       </div>
       <div class="footer__col">
         <h5>Connect</h5>
-        
-        
         <a href="investor.html">Investor Relations</a>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Sent';this.querySelector('button').disabled=true;" style="margin-top:16px;">
+          <p style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:8px;">Get platform updates</p>
+          <div style="display:flex;gap:6px;">
+            <input type="email" placeholder="Work email" required style="flex:1;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.07);color:#fff;font-size:0.8rem;font-family:inherit;outline:none;" />
+            <button type="submit" style="padding:8px 14px;border-radius:6px;background:var(--blue-primary);color:#fff;border:none;font-size:0.8rem;font-weight:600;cursor:pointer;white-space:nowrap;">Subscribe</button>
+          </div>
+        </form>
       </div>
       <div class="footer__col">
         <h5>Regional Presence</h5>
