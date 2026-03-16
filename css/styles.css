@@ -476,16 +476,11 @@ p { line-height: 1.7; }
   width: 320px; height: 320px;
   border: 1px solid rgba(99,102,241,0.2);
   transform: translate(-50%,-50%);
-  animation: orbit-spin 40s linear infinite;
 }
 .orbit-ring--mid {
   width: 200px; height: 200px;
   border: 1px solid rgba(27,45,147,0.35);
   transform: translate(-50%,-50%);
-}
-@keyframes orbit-spin {
-  from { transform: translate(-50%,-50%) rotate(0deg); }
-  to   { transform: translate(-50%,-50%) rotate(360deg); }
 }
 
 /* Orbit overlay labels */
@@ -551,27 +546,21 @@ p { line-height: 1.7; }
 .orbit-label .orbit-label__icon { color: rgba(0,0,0,0.6); }
 .orbit-label.active .orbit-label__icon { color: rgba(0,0,0,0.85); }
 
-/* Hub label (center) — circular hub with logo */
+/* Hub label (center) — logo only */
 .orbit-hub-label {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  background: rgba(27,45,147,0.85);
-  border: 2px solid rgba(99,102,241,0.45);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 40px rgba(27,45,147,0.55);
   transform: translate(-50%, -50%);
   z-index: 4;
   text-align: center;
   pointer-events: none;
 }
 .orbit-hub-label img {
-  width: 68px;
+  width: 160px;
   height: auto;
   filter: brightness(0) invert(1);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* Info panel (right side) */
