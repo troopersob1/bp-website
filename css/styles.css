@@ -514,28 +514,29 @@ p { line-height: 1.7; }
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: rgba(27,45,147,0.7);
-  border: 1.5px solid rgba(99,102,241,0.35);
+  background: transparent;
+  border: none;
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 10px rgba(27,45,147,0.35);
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s;
 }
 .orbit-label.active .orbit-label__inner {
-  background: rgba(27,45,147,0.95);
-  border-color: rgba(99,102,241,0.75);
-  box-shadow: 0 0 20px rgba(27,45,147,0.7);
   transform: scale(1.2);
 }
 .orbit-label__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.9);
+}
+/* Light-coloured nodes (yellow, cyan, yellow-green) need dark icons */
+.orbit-label[data-icon-dark="true"] .orbit-label__icon {
+  color: rgba(0,0,0,0.85);
 }
 .orbit-label.active .orbit-label__icon {
-  color: #fff;
+  color: inherit;
 }
 .orbit-label__icon svg {
   flex-shrink: 0;
