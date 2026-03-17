@@ -910,29 +910,27 @@ function initOrbitScroll() {
     sectionObserver.observe(journey);
   }
 
-  // Auto-advance every 3 seconds through all steps
+  // Auto-advance every 3 seconds through all steps (drives visuals directly, no scrolling)
+  const steps = [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8];
   let autoOrbitIndex = 0;
-  const autoOrbitTimer = setInterval(() => {
+  let autoOrbitTimer = setInterval(() => {
     autoOrbitIndex++;
-    if (autoOrbitIndex >= triggers.length) {
-      clearInterval(autoOrbitTimer);
-      return;
+    if (autoOrbitIndex >= steps.length) {
+      autoOrbitIndex = 0;
     }
-    triggers[autoOrbitIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setActiveStep(steps[autoOrbitIndex]);
   }, 3000);
 
   // Pause auto-advance on manual scroll or touch
-  window.addEventListener('wheel', () => clearInterval(autoOrbitTimer), { once: true });
-  window.addEventListener('touchmove', () => clearInterval(autoOrbitTimer), { once: true });
+  window.addEventListener('wheel', () => { clearInterval(autoOrbitTimer); autoOrbitTimer = null; }, { once: true });
+  window.addEventListener('touchmove', () => { clearInterval(autoOrbitTimer); autoOrbitTimer = null; }, { once: true });
 
   // Clickable progress dots — also cancels auto-advance
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      clearInterval(autoOrbitTimer);
+      if (autoOrbitTimer) { clearInterval(autoOrbitTimer); autoOrbitTimer = null; }
       const step = parseInt(dot.dataset.step);
-      const triggerIdx = step + 1;
-      const targetTrigger = triggers[triggerIdx];
-      if (targetTrigger) targetTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setActiveStep(step);
     });
   });
 
