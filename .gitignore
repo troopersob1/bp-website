@@ -2,7 +2,9 @@
 .claude/
 *.code-workspace
 *.docx
-*.pdf
+UBS_BetterPlace_CIM*
+BetterPlace Brand Style Guide*
+Project Brief*
 *.ai
 logo-blue-vertical*
 staffBetter_Blue*
@@ -10,5 +12,4 @@ BP Colour*
 BP_Colour*
 Vertical Colour*
 contact-office.png
-Global impact*
 hero-concepts.html
