@@ -83,13 +83,31 @@
         <a href="gobetter.html">GoBetter</a>
         <a href="staffbetter.html">StaffBetter</a>
         <a href="gigbetter.html">GigBetter</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav__dropdown">
+          <a href="company.html" class="nav__dropdown-trigger active">Company <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="nav__dropdown-menu">
+            <a href="company.html">Overview</a>
+            <a href="investor.html">Investor Relations</a>
+            <a href="impact.html">Our Impact</a>
+            <a href="ai.html">AI Initiative</a>
+            <div class="nav__dropdown-divider"></div>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
       </div>
       <button class="nav__hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="nav__mobile">
-    <a href="index.html">Home</a><a href="gobetter.html">GoBetter</a><a href="staffbetter.html">StaffBetter</a><a href="gigbetter.html">GigBetter</a><a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="gobetter.html">GoBetter</a>
+    <a href="staffbetter.html">StaffBetter</a>
+    <a href="gigbetter.html">GigBetter</a>
+    <a href="company.html">Company</a>
+    <a href="investor.html" style="padding-left:1.5rem;font-size:0.875rem;opacity:0.8;">Investor Relations</a>
+    <a href="impact.html" style="padding-left:1.5rem;font-size:0.875rem;opacity:0.8;">Our Impact</a>
+    <a href="ai.html" style="padding-left:1.5rem;font-size:0.875rem;opacity:0.8;">AI Initiative</a>
+    <a href="contact.html" style="padding-left:1.5rem;font-size:0.875rem;opacity:0.8;">Contact Us</a>
     <a href="contact.html" class="btn btn-primary">Request Demo</a>
   </div>
 </nav>
@@ -112,9 +130,32 @@
 
       <!-- FORM -->
       <div class="contact-form">
-        <h3 style="margin-bottom:8px;">Send Us a Message</h3>
-        <p style="color:var(--body-text);font-size:0.9rem;margin-bottom:32px;">Fill out the form below and a BetterPlace team member will be in touch within 24 hours.</p>
+        <!-- Inquiry type tabs -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;" role="tablist" aria-label="Inquiry type">
+          <button type="button" class="contact-tab contact-tab--active" data-tab="general" role="tab" aria-selected="true" onclick="switchContactTab(this,'general')" style="padding:8px 18px;border-radius:8px;border:1px solid var(--neelam);background:var(--neelam);color:#fff;font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.15s;">General</button>
+          <button type="button" class="contact-tab" data-tab="supplier" role="tab" aria-selected="false" onclick="switchContactTab(this,'supplier')" style="padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--body-text);font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.15s;">Supplier</button>
+          <button type="button" class="contact-tab" data-tab="partner" role="tab" aria-selected="false" onclick="switchContactTab(this,'partner')" style="padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--body-text);font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.15s;">Partner</button>
+          <button type="button" class="contact-tab" data-tab="investor" role="tab" aria-selected="false" onclick="switchContactTab(this,'investor')" style="padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--body-text);font-size:0.82rem;font-weight:700;cursor:pointer;transition:all 0.15s;">Investor Relations</button>
+        </div>
+        <!-- Tab sub-copy -->
+        <div id="tab-desc-general" style="margin-bottom:28px;">
+          <h3 style="margin-bottom:8px;">Send Us a Message</h3>
+          <p style="color:var(--body-text);font-size:0.9rem;">Fill out the form below and a BetterPlace team member will be in touch within 24 hours.</p>
+        </div>
+        <div id="tab-desc-supplier" style="display:none;margin-bottom:28px;">
+          <h3 style="margin-bottom:8px;">Supplier Enquiry</h3>
+          <p style="color:var(--body-text);font-size:0.9rem;">Looking to become a service or technology supplier to BetterPlace? Tell us what you offer and our procurement team will follow up.</p>
+        </div>
+        <div id="tab-desc-partner" style="display:none;margin-bottom:28px;">
+          <h3 style="margin-bottom:8px;">Partnership Enquiry</h3>
+          <p style="color:var(--body-text);font-size:0.9rem;">Interested in a strategic, channel, or integration partnership? Share your proposal and we'll connect you with the right team.</p>
+        </div>
+        <div id="tab-desc-investor" style="display:none;margin-bottom:28px;">
+          <h3 style="margin-bottom:8px;">Investor Relations</h3>
+          <p style="color:var(--body-text);font-size:0.9rem;">For investment enquiries, financial information, or media requests, our IR team typically responds within 2 business days.</p>
+        </div>
         <form novalidate>
+          <input type="hidden" id="contact-inquiry-type" name="inquiry_type" value="general" />
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
             <div class="form-group">
               <label for="contact-name">Full Name *</label>
@@ -136,18 +177,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-interest">I am interested in *</label>
-            <select id="contact-interest" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="enterprise">Enterprise Solutions</option>
-              <option value="investor">Investor Relations</option>
-              <option value="partnership">Partnership</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
             <label for="contact-message">Message</label>
-            <textarea id="contact-message" rows="5" placeholder="Tell us about your workforce needs or enquiry..."></textarea>
+            <textarea id="contact-message" rows="5" placeholder="Tell us about your enquiry..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
@@ -155,6 +186,31 @@
           </button>
           <p style="font-size:0.78rem;color:#A0A0B8;margin-top:16px;text-align:center;">By submitting, you agree to our Privacy Policy.</p>
         </form>
+        <script>
+        function switchContactTab(btn, tab) {
+          document.querySelectorAll('.contact-tab').forEach(function(t) {
+            t.setAttribute('aria-selected','false');
+            t.style.background = '#fff';
+            t.style.color = 'var(--body-text)';
+            t.style.borderColor = 'var(--border)';
+          });
+          btn.setAttribute('aria-selected','true');
+          btn.style.background = 'var(--neelam)';
+          btn.style.color = '#fff';
+          btn.style.borderColor = 'var(--neelam)';
+          ['general','supplier','partner','investor'].forEach(function(t) {
+            document.getElementById('tab-desc-' + t).style.display = (t === tab) ? 'block' : 'none';
+          });
+          document.getElementById('contact-inquiry-type').value = tab;
+          var ph = { general: 'Tell us about your workforce needs or enquiry...', supplier: 'Describe your product or service and how it could benefit BetterPlace...', partner: 'Describe your partnership proposal and the opportunity you see...', investor: 'Please share the nature of your investment enquiry...' };
+          document.getElementById('contact-message').placeholder = ph[tab] || ph.general;
+        }
+        // Auto-select tab from URL param ?interest=
+        (function() {
+          var p = new URLSearchParams(window.location.search).get('interest');
+          if (p) { var b = document.querySelector('[data-tab="'+p+'"]'); if (b) switchContactTab(b, p); }
+        })();
+        </script>
       </div>
 
       <!-- CONTACT INFO -->
@@ -216,8 +272,7 @@
         <p style="margin-top:16px;">Asia's largest full-stack platform for frontline workforce management. Empowering 25M+ workers across 1,000+ enterprises in 500+ cities.</p>
       </div>
       <div class="footer__col"><h5>Offerings</h5><a href="gobetter.html">GoBetter</a><a href="staffbetter.html">StaffBetter</a><a href="gigbetter.html">GigBetter</a></div>
-      <div class="footer__col"><h5>Company</h5><a href="impact.html">Our Impact</a><a href="ai.html">AI Initiative</a><a href="contact.html">Contact</a></div>
-      <div class="footer__col"><h5>Connect</h5><a href="investor.html">Investor Relations</a></div>
+      <div class="footer__col"><h5>Company</h5><a href="company.html">Overview</a><a href="impact.html">Our Impact</a><a href="ai.html">AI Initiative</a><a href="investor.html">Investor Relations</a><a href="contact.html">Contact</a></div>
       <div class="footer__col">
         <h5>Regional Presence</h5>
         <span style="display:block;font-size:0.85rem;padding:5px 0;">&#127470;&#127475; India, Bangalore (HQ)</span>
