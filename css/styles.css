@@ -373,13 +373,14 @@ p { line-height: 1.7; }
   border-radius: var(--radius); box-shadow: var(--shadow-lg);
   padding: 6px 0; z-index: 300;
 }
-.nav__dropdown:hover .nav__dropdown-menu { display: block; }
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown.open .nav__dropdown-menu { display: block; }
 .nav__dropdown-menu a {
   display: block; padding: 10px 20px; font-size: 0.875rem; font-weight: 600;
-  color: var(--body-text); transition: color var(--transition), background var(--transition);
+  color: var(--body-text) !important; transition: color var(--transition), background var(--transition);
   white-space: nowrap;
 }
-.nav__dropdown-menu a:hover { color: var(--dark); background: var(--gray-bg); }
+.nav__dropdown-menu a:hover { color: var(--dark) !important; background: var(--gray-bg); }
 .nav__dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
 
 /* StaffBetter pillar equal-weight styles */

@@ -24,6 +24,22 @@ function initNav() {
     nav.classList.toggle('scrolled', window.scrollY > 10);
   }, { passive: true });
 
+  // Dropdown click toggle (for touch / click-based navigation)
+  document.querySelectorAll('.nav__dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      const dropdown = this.closest('.nav__dropdown');
+      const isOpen = dropdown.classList.contains('open');
+      document.querySelectorAll('.nav__dropdown').forEach(d => d.classList.remove('open'));
+      if (!isOpen) dropdown.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav__dropdown')) {
+      document.querySelectorAll('.nav__dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
+
   const hamburger = nav.querySelector('.nav__hamburger');
   const mobileMenu = nav.querySelector('.nav__mobile');
   if (hamburger && mobileMenu) {

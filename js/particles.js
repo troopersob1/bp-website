@@ -8,6 +8,8 @@
   // Create fixed canvas
   var canvas = document.createElement('canvas');
   canvas.id = 'bp-particles';
+  canvas.setAttribute('aria-hidden', 'true');
+  canvas.setAttribute('role', 'presentation');
   canvas.style.cssText =
     'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.35;';
   document.body.insertBefore(canvas, document.body.firstChild);
